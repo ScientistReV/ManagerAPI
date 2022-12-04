@@ -14,6 +14,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Manager.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Manager.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Manager.Core.dll": {}
+        }
       }
     }
   },
@@ -38,10 +48,16 @@
         "lib/netstandard2.1/FluentValidation.dll",
         "lib/netstandard2.1/FluentValidation.xml"
       ]
+    },
+    "Manager.Core/1.0.0": {
+      "type": "project",
+      "path": "../Manager.Core/Manager.Core.csproj",
+      "msbuildProject": "../Manager.Core/Manager.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Manager.Core >= 1.0.0",
       "fluentvalidation >= 11.2.2"
     ]
   },
@@ -53,11 +69,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\scien\\Desktop\\Manager\\src\\Manager.Domain\\Manager.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\scien\\Desktop\\API\\ManagerAPI\\src\\Manager.Domain\\Manager.Domain.csproj",
       "projectName": "Manager.Domain",
-      "projectPath": "C:\\Users\\scien\\Desktop\\Manager\\src\\Manager.Domain\\Manager.Domain.csproj",
+      "projectPath": "C:\\Users\\scien\\Desktop\\API\\ManagerAPI\\src\\Manager.Domain\\Manager.Domain.csproj",
       "packagesPath": "C:\\Users\\scien\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scien\\Desktop\\Manager\\src\\Manager.Domain\\obj\\",
+      "outputPath": "C:\\Users\\scien\\Desktop\\API\\ManagerAPI\\src\\Manager.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -79,7 +95,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\scien\\Desktop\\API\\ManagerAPI\\src\\Manager.Core\\Manager.Core.csproj": {
+              "projectPath": "C:\\Users\\scien\\Desktop\\API\\ManagerAPI\\src\\Manager.Core\\Manager.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
-using Manager.Infra.Intefaces;
+using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Manager.Infra.Repositories

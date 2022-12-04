@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
-using Manager.Infra.Intefaces;
+using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,11 +10,16 @@ namespace Manager.Infra.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
-        private readonly ManagerContext _context;
+        protected readonly ManagerContext _context;
 
         public BaseRepository(ManagerContext context)
         {
             _context = context;
+        }
+
+        public BaseRepository()
+        {
+            
         }
 
         public virtual async Task<T> Create(T obj)
@@ -33,7 +38,7 @@ namespace Manager.Infra.Repositories
 
         public virtual async Task Remove(long id)
         {
-            var obj = await GetById(id);
+            var obj = await Get(id);
             if(obj != null)
             {
                 _context.Remove(obj);
@@ -41,7 +46,7 @@ namespace Manager.Infra.Repositories
             }
         }
 
-        public virtual async Task<T> GetById(long id)
+        public virtual async Task<T> Get(long id)
         {
             var obj = await _context.Set<T>().AsNoTracking().Where(x => x.Id == id).ToListAsync();
 

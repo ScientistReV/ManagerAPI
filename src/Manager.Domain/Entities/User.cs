@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 using Manager.Domain.Validators;
+using Manager.Core.Exceptions;
 
 namespace Manager.Domain.Entities
 {
@@ -19,6 +20,8 @@ namespace Manager.Domain.Entities
             Email = email;
             Password = password;
             _errors = new List<string>();
+
+            Validate();
         }
         protected User()
         {
@@ -52,7 +55,7 @@ namespace Manager.Domain.Entities
                 foreach (var error in validation.Errors)
                     _errors.Add(error.ErrorMessage);
 
-                    throw new Exception("Some fields are invalid, please correct them" + _errors[0]);
+                    throw new DomainException("Some fields are invalid, please correct them", _errors);
             }
 
             return true;
